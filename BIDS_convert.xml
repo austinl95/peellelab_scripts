@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+				
+        <initialisation>
+            <module><name>aamod_study_init</name></module>
+        </initialisation>
+		
+        <main>
+			
+            <!-- minimal pipeline that allows conversion of our CNDA -->
+            <!-- dicom & aa-based modeling to BIDS using aa_export_toBIDS -->
+
+            <module><name>aamod_autoidentifyseries_timtrio</name></module>
+
+            <!-- structural dicom => nifti conversion and defacing -->
+            <!-- always biascorrect if you're defacing! -->
+
+            <module><name>aamod_get_dicom_structural</name></module>  		   
+            <module><name>aamod_convert_structural</name></module>
+            <module><name>aamod_biascorrect_structural</name></module>
+            <module><name>aamod_freesurfer_deface</name></module>
+
+            <!-- if you do not include T2, comment this block -->
+
+ 			<module><name>aamod_get_dicom_t2</name></module>  		   
+			<module><name>aamod_convert_t2</name></module>
+			<module><name>aamod_biascorrect_t2</name></module>
+			<module><name>aamod_freesurfer_deface_apply_t2</name></module>
+            
+           <!-- functional dicom => nifti conversion -->
+
+            <module><name>aamod_get_dicom_epi</name></module>  		   
+            <module><name>aamod_convert_epis</name></module>
+
+            <!-- need aamod_firstlevel_model in the pipeline so we can do addevents in -->
+            <!-- the userscript but we don't want to actually run it. Ergo aamod_halt -->
+
+            <module><name>aamod_halt</name></module>
+            <module><name>aamod_firstlevel_model</name></module>
+            
+	</main>
+		
+	</tasklist>
+</aap>

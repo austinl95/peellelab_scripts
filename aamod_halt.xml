@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aap>
+    <tasklist>
+        
+        <currenttask domain='study' desc='force execution to halt' modality='MRI' >      
+        
+        <!-- module needs inputs and outputs or scheduler has kittens -->
+        
+       <inputstreams>
+            <stream isrenameable='1' isessential='0'>dummy</stream>
+        </inputstreams>
+
+        <outputstreams>
+            <stream isrenameable='1'>dummy</stream>
+        </outputstreams>
+        
+        </currenttask>
+    </tasklist>
+</aap>
