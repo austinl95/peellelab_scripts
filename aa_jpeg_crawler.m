@@ -68,10 +68,11 @@ if (~exist('aap_prov.jpg','file'))
 	system('/usr/local/bin/dot aap_prov.dot -Tjpg -o aap_prov.jpg 2>/dev/null');
 end
 
-% we also convert any text file beginnning with "diagnostics_*
+% we also convert any text file beginning with "diagnostics_*
 % in the root dir so we can include it in the report
 
 root_diagnostic_files = dir('diagnostics_*.txt');
+
 
 for index = 1:numel(root_diagnostic_files)
 	fname = root_diagnostic_files(index).name;
